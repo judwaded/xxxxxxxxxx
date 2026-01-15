@@ -478,7 +478,7 @@
         setInterval(createFire, 200);
 
         const bgMusic = document.getElementById('bgMusic');
-        bgMusic.volume = 0.3;
+        bgMusic.volume = 0.1;
         const startAudio = () => {
             bgMusic.play().then(() => {
                 ["click", "mousemove", "touchstart"].forEach(ev => document.removeEventListener(ev, startAudio));
@@ -514,3 +514,4 @@
     </script>
 </body>
 </html>
+
