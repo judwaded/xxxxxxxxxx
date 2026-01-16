@@ -49,6 +49,7 @@
 
         .main-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 10; }
         
+        /* Mobile Spacing Fix */
         @media (max-width: 600px) {
             .main-container { padding: 0 20px; }
         }
@@ -58,6 +59,7 @@
         .text-year { font-family: 'Orbitron', sans-serif; font-size: clamp(30px, 6vw, 70px); font-weight: 900; margin: 0; line-height: 1; }
         .status-bar { margin-top: 15px; font-family: 'Rajdhani', sans-serif; color: var(--sub-text); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
 
+        /* Search & Filter Bar Responsive */
         .search-filter-bar {
             display: flex;
             align-items: center;
@@ -89,6 +91,7 @@
         .search-input { background: transparent; border: none; color: var(--text-color); font-size: 16px; width: 100%; outline: none; font-family: 'Inter', sans-serif; }
         .search-input::placeholder { color: var(--sub-text); opacity: 0.5; }
 
+        /* Filter buttons Horizontal Scroll on Mobile */
         .filter-group { 
             display: flex; 
             align-items: center; 
@@ -113,6 +116,7 @@
 
         .horizontal-divider { margin: 40px 0; height: 1.5px; background: #ffffff; opacity: 0.6; border-radius: 10px; }
 
+        /* Grid Wrapper Responsive */
         .grid-wrapper { 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
@@ -331,6 +335,13 @@
 
             <div class="photo-frame" data-role="member">
                 <img src="https://img2.pic.in.th/Logo_JUDWADED-2.png" class="main-photo">
+                <h3 class="profile-name">Auan Realjung</h3>
+                <p class="profile-role">MEMBER</p>
+                <a href="https://www.facebook.com/eithan.styleboy" class="fb-btn">VIEW PROFILE</a>
+            </div>
+
+            <div class="photo-frame" data-role="member">
+                <img src="https://img2.pic.in.th/Logo_JUDWADED-2.png" class="main-photo">
                 <h3 class="profile-name">Shinchan Realjung</h3>
                 <p class="profile-role">MEMBER</p>
                 <a href="https://www.facebook.com/Whisperxxx/?locale=th_TH" class="fb-btn">VIEW PROFILE</a>
@@ -543,4 +554,3 @@
     </script>
 </body>
 </html>
-
