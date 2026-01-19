@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUDWADED 2K26 - Official</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Orbitron:wght@900&family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.96));
+            --text-color: #ffffff;
+            --sub-text: #888;
+            --bar-bg: rgba(255, 255, 255, 0.07);
+            --bar-border: rgba(255, 255, 255, 0.12);
+            --accent-color: #ffffff;
+            --active-bg: #ffffff;
+            --active-text: #000000;
+            --fire-color: #ffffff;
+        }
+
+        body {
+            background: var(--bg-gradient), url('https://img2.pic.in.th/Logo_JUDWADED.png');
+            background-size: cover;
+            background-position: center top; 
+            background-attachment: fixed;
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            overflow: hidden; 
+        }
+
+        /* Fire Effect */
+        #fire-container { position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .particle { position: absolute; bottom: -20px; background: var(--fire-color); border-radius: 50%; filter: blur(1px); opacity: 0.8; box-shadow: 0 0 10px var(--fire-color); animation: rise linear infinite; }
+        @keyframes rise { 0% { transform: translateY(0) translateX(0); opacity: 0.8; } 50% { transform: translateY(-50vh) translateX(20px); opacity: 0.5; } 100% { transform: translateY(-100vh) translateX(-20px); opacity: 0; } }
+
+        /* Layout Container */
+        .main-container { 
+            max-width: 1800px; 
+            margin: 0 auto; 
+            padding: 0 60px; 
+            position: relative; 
+            z-index: 10; 
+        }
+
+        @media (max-width: 1100px) { 
+            .content-wrapper { 
+                flex-direction: column; 
+                text-align: center;
+                justify-content: center !important;
+            }
+            .main-container { padding: 0 20px; }
+            .header-section { margin-bottom: 40px; flex: none; }
+            .center-box { width: 100% !important; max-width: 500px; height: auto !important; padding: 40px 20px; }
+        }
+
+        .content-wrapper {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;           
+            height: 100vh;
+            width: 100%;
+            gap: 40px; 
+        }
+
+        .header-section { 
+            flex: 1; 
+            min-width: 400px;
+        }
+
+        .text-brand { font-family: 'Orbitron', sans-serif; font-size: clamp(40px, 6vw, 85px); font-weight: 900; margin: 0; letter-spacing: -2px; line-height: 0.9; }
+        .text-year { font-family: 'Orbitron', sans-serif; font-size: clamp(30px, 4vw, 70px); font-weight: 900; margin: 0; line-height: 0.9; }
+        .status-bar { margin-top: 15px; font-family: 'Rajdhani', sans-serif; color: var(--sub-text); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* --- กล่องสี่เหลี่ยม --- */
+        .center-box {
+            width: 700px; 
+            height: 400px; 
+            background: var(--bar-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--bar-border);
+            border-radius: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+            z-index: 20;
+        }
+
+        /* --- ส่วนของการจัดวางปุ่ม --- */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* ระยะห่างระหว่างแถวบนและแถวล่าง */
+            width: 80%;
+        }
+
+        .top-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* ระยะห่างระหว่าง 2 ปุ่มบน */
+        }
+
+        .bottom-row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--bar-border);
+            color: white;
+            padding: 18px 40px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1; /* ให้ปุ่มแถวบนกว้างเท่ากัน */
+            max-width: 250px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: white;
+            color: black;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-large {
+            max-width: 200px; /* ให้ปุ่มล่างยาวครอบคลุมพื้นที่ 2 ปุ่มบน */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="fire-container"></div>
+
+    <div class="main-container">
+        <div class="content-wrapper">
+            
+            <header class="header-section">
+                <h1 class="text-brand">JUDWADED</h1>
+                <h2 class="text-year">2K26</h2>
+                <div class="status-bar">WAIRAIBXY // WATJAISTYLE </div>
+            </header>
+
+            <div class="center-box">
+                <div class="button-group">
+                    <div class="top-row">
+                        <a href="index.html" class="btn">JUDWADED</a>
+                        <a href="#" class="btn">WAIRAIBXY</a>
+                    </div>
+                    <div class="bottom-row">
+                        <a href="#" class="btn btn-large">WATJAISTYLE</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function createParticles() {
+            const container = document.getElementById('fire-container');
+            const particleCount = 40; 
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 4 + 2 + 'px';
+                particle.style.width = size;
+                particle.style.height = size;
+                particle.style.left = Math.random() * 100 + 'vw';
+                const duration = Math.random() * 3 + 2 + 's';
+                const delay = Math.random() * 5 + 's';
+                particle.style.animationDuration = duration;
+                particle.style.animationDelay = delay;
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+    </script>
+</body>
+</html>
