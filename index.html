@@ -48,18 +48,38 @@
         @keyframes rise { 0% { transform: translateY(0) translateX(0); opacity: 0.8; } 50% { transform: translateY(-50vh) translateX(20px); opacity: 0.5; } 100% { transform: translateY(-100vh) translateX(-20px); opacity: 0; } }
 
         .main-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 10; }
-        
-        /* Mobile Spacing Fix */
-        @media (max-width: 600px) {
-            .main-container { padding: 0 20px; }
+        .header-section { padding: 60px 0 10px 0; }
+
+       /* แก้ไขส่วนหัวข้อให้ดูพรีเมียมขึ้น */
+        .text-brand { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: clamp(45px, 9vw, 95px); /* ขยายขนาดให้เด่นกว่าเดิม */
+            font-weight: 900; 
+            margin: 0; 
+            letter-spacing: -4px; /* กระชับตัวอักษรให้ดูเท่ */
+            line-height: 0.8; 
+            /* เพิ่ม Chrome/Silver Effect */
+            background: linear-gradient(to bottom, #ffffff 40%, #a2a2a2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
         }
 
-        .header-section { padding: 60px 0 10px 0; }
-        .text-brand { font-family: 'Orbitron', sans-serif; font-size: clamp(40px, 8vw, 85px); font-weight: 900; margin: 0; letter-spacing: -2px; line-height: 1; }
-        .text-year { font-family: 'Orbitron', sans-serif; font-size: clamp(30px, 6vw, 70px); font-weight: 900; margin: 0; line-height: 1; }
+        .text-year { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: clamp(18px, 3.5vw, 32px); /* ปรับขนาดสโลแกนให้เล็กลงแต่ดูหรู */
+            font-weight: 700; 
+            margin: 10px 0 0 5px; 
+            line-height: 1; 
+            letter-spacing: 12px; /* เพิ่มช่องว่างระหว่างตัวอักษรให้ดูโปร */
+            text-transform: uppercase;
+            color: var(--accent-color);
+            opacity: 0.8;
+            filter: blur(0.3px); /* เพิ่มความนวลเล็กน้อย */
+        }
+
         .status-bar { margin-top: 15px; font-family: 'Rajdhani', sans-serif; color: var(--sub-text); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
 
-        /* Search & Filter Bar Responsive */
         .search-filter-bar {
             display: flex;
             align-items: center;
@@ -72,18 +92,6 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             max-width: 1100px;
             width: 100%;
-            box-sizing: border-box;
-        }
-
-        @media (max-width: 900px) {
-            .search-filter-bar {
-                flex-direction: column;
-                border-radius: 25px;
-                padding: 15px;
-                gap: 15px;
-            }
-            .search-group { width: 100%; }
-            .filter-group { width: 100%; justify-content: center; }
         }
 
         .search-group { display: flex; align-items: center; flex-grow: 1; gap: 15px; }
@@ -91,52 +99,40 @@
         .search-input { background: transparent; border: none; color: var(--text-color); font-size: 16px; width: 100%; outline: none; font-family: 'Inter', sans-serif; }
         .search-input::placeholder { color: var(--sub-text); opacity: 0.5; }
 
-        /* Filter buttons Horizontal Scroll on Mobile */
-        .filter-group { 
-            display: flex; 
-            align-items: center; 
-            gap: 5px; 
-            overflow-x: auto; 
-            padding-bottom: 5px;
-            scrollbar-width: none; /* Hide scrollbar Firefox */
-        }
-        .filter-group::-webkit-scrollbar { display: none; /* Hide scrollbar Chrome/Safari */ }
-
+        .filter-group { display: flex; align-items: center; gap: 5px; }
         .filter-btn {
-            padding: 10px 20px; border-radius: 100px; border: none; background: transparent;
-            color: var(--sub-text); font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;
+            padding: 12px 26px; border-radius: 100px; border: none; background: transparent;
+            color: var(--sub-text); font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;
         }
         .filter-btn.active { background: #ffffff; color: #000000 !important; box-shadow: 0 4px 15px rgba(255,255,255,0.2); }
+        .filter-btn:not(.active):hover { color: var(--text-color); }
 
         .theme-toggle-pill {
-            min-width: 40px; height: 40px; border-radius: 50%; border: none; background: #ffffff; color: #000000;
-            cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-left: 10px; flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            width: 45px; height: 45px; border-radius: 50%; border: none; background: #ffffff; color: #000000;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-left: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease;
+        }
+        .theme-toggle-pill:hover { transform: rotate(180deg) scale(1.1); }
+        .light-mode .theme-toggle-pill { background: #000000; color: #ffffff; }
+
+        .horizontal-divider {
+            margin: 40px 0;
+            height: 1.5px;
+            background: #ffffff;
+            opacity: 0.6;
+            border-radius: 10px;
         }
 
-        .horizontal-divider { margin: 40px 0; height: 1.5px; background: #ffffff; opacity: 0.6; border-radius: 10px; }
-
-        /* Grid Wrapper Responsive */
-        .grid-wrapper { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 25px; 
-            padding-bottom: 100px; 
-        }
-
-        @media (max-width: 400px) {
-            .grid-wrapper { grid-template-columns: 1fr; }
-        }
-
-        .photo-frame { background: var(--bar-bg); border: 1px solid var(--bar-border); border-radius: 32px; padding: 20px; display: flex; flex-direction: column; align-items: center; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(10px); }
-        .photo-frame:hover { transform: translateY(-8px); border-color: var(--accent-color); }
-        .main-photo { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: #111; border-radius: 24px; margin-bottom: 15px; }
-        .profile-name { font-size: 18px; font-weight: 700; margin: 0 0 6px 0; text-align: center; }
-        .profile-role { font-family: 'Rajdhani', sans-serif; font-size: 12px; color: var(--sub-text); letter-spacing: 2px; text-transform: uppercase; }
-        .fb-btn { margin-top: 15px; width: 100%; padding: 12px; background: #fff; color: #000; text-decoration: none; text-align: center; border-radius: 14px; font-weight: 700; transition: 0.3s; font-size: 14px; }
+        .grid-wrapper { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 35px; padding-bottom: 100px; }
+        .photo-frame { background: var(--bar-bg); border: 1px solid var(--bar-border); border-radius: 32px; padding: 22px; display: flex; flex-direction: column; align-items: center; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(10px); }
+        .photo-frame:hover { transform: translateY(-12px); border-color: var(--accent-color); }
+        .main-photo { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: #111; border-radius: 24px; margin-bottom: 20px; }
+        .profile-name { font-size: 20px; font-weight: 700; margin: 0 0 6px 0; }
+        .profile-role { font-family: 'Rajdhani', sans-serif; font-size: 13px; color: var(--sub-text); letter-spacing: 2px; text-transform: uppercase; }
+        .fb-btn { margin-top: 20px; width: 100%; padding: 15px; background: #fff; color: #000; text-decoration: none; text-align: center; border-radius: 16px; font-weight: 700; transition: 0.3s; }
         .fb-btn:hover { background: #000; color: #fff; }
 
-        /* --- Footer Design --- */
+       /* --- Footer Design --- */
         .custom-footer {
             padding: 80px 20px;
             background: transparent;
@@ -244,7 +240,7 @@
                 </div>
                 <div class="filter-group">
                     <button class="filter-btn active" data-role="all">All</button>
-                    <button class="filter-btn" data-role="theboss">Theboss</button>
+                    <button class="filter-btn" data-role="founder">Founder</button>
                     <button class="filter-btn" data-role="leader">Leader</button>
                     <button class="filter-btn" data-role="KingZ2F">KingZ2F</button>
                     <button class="filter-btn" data-role="member">Member</button>
@@ -259,7 +255,7 @@
             <div class="photo-frame" data-role="theboss">
                <img src="https://img2.pic.in.th/Logo_JUDWADED-2.png" class="main-photo">
                 <h3 class="profile-name">Seere Realjung</h3>
-                <p class="profile-role">Theboss</p>
+                <p class="profile-role">founder</p>
                 <a href="https://www.facebook.com/SeereWairaibxy" class="fb-btn">VIEW PROFILE</a>
             </div> 
 
@@ -331,13 +327,6 @@
                 <h3 class="profile-name">Jaynutz Quest</h3>
                 <p class="profile-role">MEMBER</p>
                 <a href="https://www.facebook.com/jaynutzovf?locale=th_TH" class="fb-btn">VIEW PROFILE</a>
-            </div>
-
-            <div class="photo-frame" data-role="member">
-                <img src="https://img2.pic.in.th/Logo_JUDWADED-2.png" class="main-photo">
-                <h3 class="profile-name">Auan Realjung</h3>
-                <p class="profile-role">MEMBER</p>
-                <a href="https://www.facebook.com/eithan.styleboy" class="fb-btn">VIEW PROFILE</a>
             </div>
 
             <div class="photo-frame" data-role="member">
@@ -472,7 +461,7 @@
                 <p class="profile-role">MEMBER</p>
                 <a href="https://www.facebook.com/ashi.paktorlae?locale=th_TH" class="fb-btn">VIEW PROFILE</a>
             </div>
-        </div>
+            </div>
 
         <footer class="custom-footer">
             <div class="footer-container-centered">
@@ -503,7 +492,6 @@
 
         function createFire() {
             const container = document.getElementById('fire-container');
-            if(!container) return;
             const particle = document.createElement('div');
             particle.classList.add('particle');
             const size = Math.random() * 6 + 2 + 'px';
@@ -517,14 +505,13 @@
         setInterval(createFire, 200);
 
         const bgMusic = document.getElementById('bgMusic');
-        if(bgMusic) bgMusic.volume = 0.1;
-        
+        bgMusic.volume = 0.1;
         const startAudio = () => {
             bgMusic.play().then(() => {
-                ["click", "touchstart"].forEach(ev => document.removeEventListener(ev, startAudio));
-            }).catch(() => {});
+                ["click", "mousemove", "touchstart"].forEach(ev => document.removeEventListener(ev, startAudio));
+            });
         };
-        ["click", "touchstart"].forEach(ev => document.addEventListener(ev, startAudio));
+        ["click", "mousemove", "touchstart"].forEach(ev => document.addEventListener(ev, startAudio));
 
         const searchInput = document.getElementById('searchInput');
         const filterBtns = document.querySelectorAll('.filter-btn');
